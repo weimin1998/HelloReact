@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 移动端适配  ，可以不要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+
+</head>
+<body>
+
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+ 
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+
+
+   
+    <div id="test">
+
+    </div>
+
+    <script type="text/babel">
+ 
+        class Weather extends React.Component{
+            
+            
+            // 初始化state   可以不写在构造器里
+            state={isHot:true,wind: '微风'};
+            
+            render(){
+                
+                return(
+                    <h1 onClick={this.change}>今天天气很{this.state.isHot ? '炎热':'凉爽'},{this.state.wind}</h1>
+                )
+            }
+
+            // 箭头函数 解决this的指向
+            change= ()=>{
+                
+                this.setState({isHot: !this.state.isHot});
+                console.log('箭头函数中的this：',this)
+            }
+        }
+        
+    
+
+        ReactDOM.render(
+            <Weather />,
+            document.getElementById('test')
+        )
+    </script>
+</body>
+</html>

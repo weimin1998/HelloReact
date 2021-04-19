@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 移动端适配  ，可以不要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+
+    <style>
+        .title{
+            background-color: orange;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+ 
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+
+
+   
+    <div id="test">
+
+    </div>
+
+    <script type="text/babel">
+    
+        const myId = "HELLO";
+        const data = "魏敏";
+        
+        //  使用{} 读取变量的值
+        const vdom = (
+            // 样式不要用class    要className
+            <h1 className="title" id={myId}>
+                <span style={{color:'white',fontSize:'20px'}}> {data} </span>
+                <span style={{color:'white'}}> {data} </span>
+
+            </h1>
+
+    
+        )
+
+        // 虚拟dom中  写html的同名标签，会自动转换
+        // 如果写一个html中没有的 标签 比如<good></good>，就报错了
+        // 如果想写 html中没有的，首字母大写， 这就是自定义组件
+    
+        ReactDOM.render(
+            vdom,
+            document.getElementById('test')
+        )
+    </script>
+</body>
+</html>

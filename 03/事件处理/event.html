@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 移动端适配  ，可以不要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+
+</head>
+<body>
+
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+ 
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+
+    <script type="text/javascript" src="../../js/prop-types.js"></script>
+
+   
+    <div id="test">
+
+    </div>
+
+    <script type="text/babel">
+    
+        class Demo extends React.Component{
+
+
+            // createRef
+            // 创建出一个容器，这个容器只能存放一个 节点，
+            // <input ref={this.myRef} 
+            // 把 ref属性当前的节点 input 放到current中
+            // 如果再次放的话 就会覆盖
+            // 
+            myRef = React.createRef()
+
+            showData= ()=>{
+                console.log(this.myRef);
+                alert(this.myRef.current.value);
+            
+            }
+
+    
+            // 当发生事件的元素 和 将要操作的元素 相同时，可以这样写
+            // event.target就是发生事件的元素
+            showData1= (event)=>{
+                
+                alert(event.target.value)
+            }
+            render(){
+                return(
+                    <div>
+                        
+                        <input ref={this.myRef} type = "text" placeholder="点击按钮提示数据"/>
+                        <button ref =  "button1" onClick={this.showData}>点击提示数据</button>
+                        <input  onBlur={this.showData1} type = "text" placeholder="失去焦点提示数据"/>
+                    </div>
+                )
+            }
+        }
+        
+    
+        ReactDOM.render(
+            <Demo/>,
+            document.getElementById('test')
+        )
+    </script>
+</body>
+</html>

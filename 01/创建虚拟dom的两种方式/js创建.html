@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 移动端适配  ，可以不要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- react  核心库 必须第一个引入-->
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+    <!-- react操作dom -->
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+    <!-- jsx -js  -->
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+
+
+    <!-- 准备一个容器 -->
+    <div id="test">
+
+    </div>
+
+    <script type="text/javascript">
+    
+        // 1 创建一个虚拟dom  js创建
+        // 第一个参数 标签名
+        // 第二个参数 标签属性
+        // 第二个参数 标签内容
+        const vdom = React.createElement(
+            'h1',
+            {id:'title'},
+            'weimin'
+        )
+
+        // 2 渲染虚拟dom到页面
+        // 第一个参数  要渲染到页面的虚拟dom
+        // 第二个参数  要将虚拟dom渲染到 哪里
+        ReactDOM.render(
+            vdom,
+            document.getElementById('test')
+        )
+    </script>
+</body>
+</html>

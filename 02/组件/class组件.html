@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 移动端适配  ，可以不要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+
+</head>
+<body>
+
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+ 
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+
+
+   
+    <div id="test">
+
+    </div>
+
+    <script type="text/babel">
+    
+        // class式的组件
+        // React.Component 提供了 props,state 等
+        class Demo extends React.Component{
+            
+            //  放在类的原型对象上，让实例使用
+            render(){
+                console.log('类式组件的this',this)
+                return(
+                    <h1>class式组件weimin</h1>
+                )
+            }
+        }
+    
+        // 渲染组件 到页面
+        ReactDOM.render(
+            // 组件标签，react会自动创建一个实例，用实例调用原型上的render()
+            // 然后返回的虚拟dom
+            <Demo/>,
+            document.getElementById('test')
+        )
+    </script>
+</body>
+</html>

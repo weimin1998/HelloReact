@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 移动端适配  ，可以不要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+
+</head>
+<body>
+
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+ 
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+
+    <script type="text/javascript" src="../../js/prop-types.js"></script>
+
+   
+    <div id="test">
+
+    </div>
+
+    <script type="text/babel">
+    // 收集表单提交的数据，但是不要提交
+    class Login extends React.Component{
+
+        handleSubmit = (event)=>{
+            event.preventDefault();// 阻止表单提交
+            alert('姓名：'+this.username.value+'，密码：'+this.password.value);
+        }
+
+        render(){
+            return(
+                <form action="http://www.baidu.com" onSubmit={this.handleSubmit}>
+                    <input ref={(a)=>{this.username=a}} type = "text" name="username"/>
+                    <input ref={(a)=>{this.password=a}} type = "password" name="password"/>
+                    <button type="submit">login</button>
+                </form>
+            )
+        }
+    }
+        
+    
+        ReactDOM.render(
+            <Login/>,
+            document.getElementById('test')
+        )
+    </script>
+</body>
+</html>

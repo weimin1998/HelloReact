@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 移动端适配  ，可以不要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+
+</head>
+<body>
+
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+ 
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+
+
+   
+    <div id="test"></div>
+    <div id="test1"></div>
+    <div id="test2"></div>
+
+    <script type="text/babel">
+    
+    // props 是只读的，不可修改
+    class Person extends React.Component{
+        render(){
+            return(
+                <ul>
+                    <li>姓名 {this.props.name}</li>
+                    <li>年龄 {this.props.age}</li>
+                    <li>性别 {this.props.sex}</li>
+                </ul>
+            )
+        }
+    }
+        
+    
+        // 在标签属性中 传值，react 在创建实例对象的时候  会把这些值的key-value 放到props中
+        ReactDOM.render(
+            <Person name="weimin" age = "18" sex="男"/>,
+            document.getElementById('test')
+        )
+
+        // 批量传值  (批量传递标签属性)
+        // 参数名 必须一样
+        const p = {name:"yaya",age:"22",sex:"女"}
+        ReactDOM.render(
+            <Person {...p}/>,
+            document.getElementById('test1')
+        )
+
+
+        
+    </script>
+</body>
+</html>

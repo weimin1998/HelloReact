@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 移动端适配  ，可以不要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+
+</head>
+<body>
+
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+ 
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+
+
+   
+    <div id="test">
+
+    </div>
+
+    <script type="text/babel">
+    
+        // 函数式的组件
+        function Demo(){
+            console.log(this)  // this undefined
+            return <h1>函数式组件weimin</h1>
+        }
+    
+        // 渲染组件 到页面
+        ReactDOM.render(
+            // 调用函数，返回值就是虚拟dom
+            <Demo/>,
+            document.getElementById('test')
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 移动端适配  ，可以不要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+
+</head>
+<body>
+
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+ 
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+
+    <script type="text/javascript" src="../../js/prop-types.js"></script>
+
+   
+    <div id="test">
+
+    </div>
+
+    <script type="text/babel">
+    
+        class Demo extends React.Component{
+            showData= ()=>{
+                console.log(this)
+                alert(this.input1.value)
+            }
+
+            showData1= ()=>{
+                alert(this.input2.value)
+            }
+            
+            // 回调函数的 ref 参数a就是 当前所在的节点（比如这个input）
+            // 在回调函数中，把 ref当前所在的节点，挂在了实例对象上
+            // 不在refs上
+            render(){
+                return(
+                    <div>
+                        
+                        <input ref={(a)=>{this.input1 = a}} type = "text" placeholder="点击按钮提示数据"/>
+                        <button ref =  "button1" onClick={this.showData}>点击提示数据</button>
+                        <input ref={(a)=>{this.input2 = a}} onBlur={this.showData1} type = "text" placeholder="失去焦点提示数据"/>
+                    </div>
+                )
+            }
+        }
+        
+    
+        ReactDOM.render(
+            <Demo/>,
+            document.getElementById('test')
+        )
+    </script>
+</body>
+</html>

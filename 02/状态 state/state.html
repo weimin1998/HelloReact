@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 移动端适配  ，可以不要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+
+</head>
+<body>
+
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+ 
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+
+
+   
+    <div id="test">
+
+    </div>
+
+    <script type="text/babel">
+    
+    // 组件 的 state  是一个对象，可以写多个键值对
+    // 只能通过构造器 初始化
+    // 构造器中的 this就是 实例对象
+        class Weather extends React.Component{
+            constructor(props){
+                super(props);
+
+                this.state={isHot:true,wind: '微风'};
+
+                this.change =this.change.bind(this);
+            }
+
+            // 这个render是实例调用的
+            render(){
+                //console.log('类式组件的this',this)
+                return(
+                    <h1 onClick={this.change}>今天天气很{this.state.isHot ? '炎热':'凉爽'},{this.state.wind}</h1>
+                )
+            }
+
+            // 自定义的方法 一般都是作为事件回调
+            change(){
+                
+                //console.log(this)// undefined
+                // 因为这个方法 不是通过实例调用的，是直接调用的，应该是window
+                // 但是react  在class的方法内部开启了 严格模式  所以this就是undefined
+                // 严格模式下的this  指向undefined
+
+                // 解决办法  在构造器中 bind
+                // 或者使用箭头函数
+
+                // 解决this的指向问题 后：
+                //  不可以直接 修改state，虽然值 真的已经改了，
+                // 但是 视图不会自动刷新
+                //this.state.isHot = !this.state.isHot;
+                //console.log(this.state.isHot)
+
+                // 修改state中的值
+                // 然后react发现 值改变了，就会重新调用组件的render
+                this.setState({isHot: !this.state.isHot});
+
+            }
+        }
+        
+    
+
+        ReactDOM.render(
+            <Weather />,
+            document.getElementById('test')
+        )
+    </script>
+</body>
+</html>

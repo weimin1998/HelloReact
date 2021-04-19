@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = "1">按钮1</button>
+    <button id = "2">按钮2</button>
+    <button id = "3" onclick="demo()">按钮3</button>
+
+
+    <script type="text/javascript">
+        document.getElementById('1').addEventListener('click',()=>{
+            alert('按钮1被点击了')
+        });
+
+        document.getElementById('2').onclick = ()=>{alert('按钮2被点击了')};
+
+
+        function demo(){
+            alert('点击按钮3');
+        }
+    </script>
+
+    
+</body>
+</html>
