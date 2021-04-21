@@ -13,13 +13,13 @@
 
 <body>
 
-    <script type="text/javascript" src="../../js/react.development.js"></script>
+    <script type="text/javascript" src="../../js/17/react.development.js"></script>
 
-    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../js/17/react-dom.development.js"></script>
 
-    <script type="text/javascript" src="../../js/babel.min.js"></script>
+    <script type="text/javascript" src="../../js/17/babel.min.js"></script>
 
-    <script type="text/javascript" src="../../js/prop-types.js"></script>
+    <script type="text/javascript" src="../../js/17/prop-types.js"></script>
 
 
     <div id="test">
@@ -103,19 +103,12 @@
             }
 
 
-            // 组件将要挂载 render之前
-            componentWillMount() {
-                console.log('sum ----组件将要挂载')
-            }
 
             // 组件挂载完毕 render之后
             componentDidMount() {
                 console.log('sum ----组件挂载完毕')
             }
 
-            componentWillUnmount() {
-                console.log('sum ----组件将要卸载')
-            }
 
             // 组件应该更新吗？
             // 这个方法不写的话  默认就是返回true
@@ -134,10 +127,14 @@
                 console.log('sum ----组件将要更新')
             }
 
+            // 组件更新之前 获取快照
+            // 返回任意类型
+            getSnapshotBeforeUpdate(){
+                    return '';
+            }
+
             // 组件更新完成 render之后
-            // 可以接受两个参数，第一个是 之前的参数
-            // 第二个是之前的状态
-            // 新版本的生命周期 可以接受三个
+            // 第三个参数，更新之前的快照
             componentDidUpdate(prevprops,prevstate){
                 console.log('sum ----组件更新完成',prevprops,prevstate)
             }
@@ -156,13 +153,6 @@
         }
 
 
-        class A extends React.Component{
-            render(){
-                return(
-                    <div></div>
-                )
-            }
-        }
         ReactDOM.render(
             <Sum />,
             document.getElementById('test')
